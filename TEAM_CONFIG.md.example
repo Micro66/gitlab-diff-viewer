@@ -1,0 +1,112 @@
+# GitLab Diff Viewer 团队配置指南
+
+## 概述
+
+为了方便团队使用，GitLab Diff Viewer 现在支持统一的团队配置。管理员可以预先配置GitLab服务器地址，团队成员只需要配置个人的Access Token即可使用。
+
+## 管理员配置步骤
+
+### 1. 复制配置文件
+
+```bash
+cp config.js.example config.js
+cp TEAM_CONFIG.md.example TEAM_CONFIG.md
+```
+
+### 2. 修改配置文件
+
+编辑 `config.js` 文件，设置团队的GitLab服务器：
+
+```javascript
+const GITLAB_CONFIG = {
+  // 修改为你们团队的GitLab服务器地址
+  DEFAULT_GITLAB_URL: 'https://your-gitlab-server.com',
+  
+  // 可以添加多个服务器供选择
+  GITLAB_SERVERS: [
+    {
+      name: '公司内网GitLab',
+      url: 'https://your-gitlab-server.com',
+      description: '公司内部GitLab服务器'
+    },
+    {
+      name: 'GitLab.com',
+      url: 'https://gitlab.com',
+      description: '官方GitLab服务器'
+    },
+    {
+      name: '自定义',
+      url: '',
+      description: '手动输入GitLab服务器地址'
+    }
+  ]
+};
+```
+
+### 3. 分发给团队
+
+将配置好的扩展文件夹分发给团队成员，或者提交到团队的代码仓库中。
+
+## 团队成员使用步骤
+
+### 1. 安装扩展
+
+- 打开Chrome浏览器
+- 进入 `chrome://extensions/`
+- 开启"开发者模式"
+- 点击"加载已解压的扩展程序"
+- 选择扩展文件夹
+
+### 2. 配置个人Token
+
+- 点击扩展图标或进入扩展选项页面
+- 选择预配置的GitLab服务器（通常已经默认选中）
+- 输入个人的GitLab Access Token
+- 点击"测试连接"验证配置
+- 保存配置
+
+### 3. 获取Access Token
+
+1. 登录团队的GitLab服务器
+2. 点击右上角头像 → Settings
+3. 左侧菜单选择 "Access Tokens"
+4. 填写Token名称（如：MR Diff Viewer）
+5. 选择过期时间
+6. 勾选权限：**read_api**
+7. 点击 "Create personal access token"
+8. 复制生成的Token
+
+## 配置文件说明
+
+### DEFAULT_GITLAB_URL
+默认的GitLab服务器地址，团队成员首次使用时会自动使用这个地址。
+
+### GITLAB_SERVERS
+预设的GitLab服务器列表，团队成员可以从下拉菜单中选择：
+- `name`: 服务器显示名称
+- `url`: 服务器地址（空字符串表示自定义输入）
+- `description`: 服务器描述
+
+## 优势
+
+1. **简化配置**：团队成员无需手动输入GitLab服务器地址
+2. **统一管理**：管理员可以集中管理团队使用的GitLab服务器
+3. **灵活性**：支持多个服务器选择和自定义输入
+4. **向下兼容**：现有的个人配置仍然有效
+
+## 故障排除
+
+### 配置不生效
+- 确认 `config.js` 文件在扩展根目录
+- 检查 `manifest.json` 中是否包含了 `config.js`
+- 重新加载扩展
+
+### 无法访问GitLab服务器
+- 确认服务器地址正确
+- 检查网络连接
+- 验证Access Token权限
+
+### 扩展无法加载
+- 检查所有文件是否完整
+- 查看浏览器控制台错误信息
+- 确认manifest.json格式正确

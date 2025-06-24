@@ -1,0 +1,18 @@
+# 团队配置文件 - 每个团队应该有自己的配置
+config.js
+TEAM_CONFIG.md
+
+# 开发和调试文件
+*.log
+*.tmp
+.DS_Store
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+*~
+.temp/

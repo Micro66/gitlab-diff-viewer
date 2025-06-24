@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "GitLab MR Diff Viewer",
+  "version": "1.1",
+  "description": "查看 GitLab Merge Request 的 diff 内容",
+  "permissions": ["scripting", "storage"],
+  "host_permissions": [
+    "https://gitlab.example.com/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_title": "GitLab MR Diff Viewer",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gitlab.example.com/*/merge_requests/*", "https://*/*/merge_requests/*"],
+      "js": ["config.js", "content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
