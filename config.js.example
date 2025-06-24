@@ -3,20 +3,20 @@
 
 const GITLAB_CONFIG = {
   // 默认GitLab服务器地址
-  // 请修改为您团队的GitLab服务器地址
-  DEFAULT_GITLAB_URL: 'https://your-gitlab-server.com',
+  // 可以设置为您常用的GitLab服务器地址
+  DEFAULT_GITLAB_URL: 'https://gitlab.com',
   
   // 可选：预设多个GitLab服务器供选择
   GITLAB_SERVERS: [
     {
-      name: '公司内网GitLab',
-      url: 'https://your-gitlab-server.com',
-      description: '公司内部GitLab服务器'
-    },
-    {
       name: 'GitLab.com',
       url: 'https://gitlab.com',
       description: '官方GitLab服务器'
+    },
+    {
+      name: '自托管GitLab',
+      url: 'https://your-gitlab-server.com',
+      description: '自托管GitLab实例'
     },
     {
       name: '自定义',
@@ -40,10 +40,11 @@ const GITLAB_CONFIG = {
     `,
     
     installation_guide: `
-团队使用说明：
-1. 管理员已预配置GitLab服务器地址
-2. 个人只需要配置自己的Access Token即可
-3. 如需使用其他GitLab服务器，可在配置页面选择或自定义
+使用说明：
+1. 首次使用请配置GitLab服务器地址和Access Token
+2. 支持GitLab.com和自托管GitLab实例
+3. 可在配置页面添加多个GitLab服务器
+4. 团队管理员可预配置服务器地址供团队使用
     `
   }
 };
