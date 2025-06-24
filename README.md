@@ -83,10 +83,10 @@ gitlab-diff-viewer/
 
 #### 1. 下载和安装
 
-**方式一：从 Chrome Web Store 安装（推荐）**
-1. 访问 [Chrome Web Store](https://chrome.google.com/webstore) 搜索 "GitLab MR Diff Viewer"
-2. 点击「添加至 Chrome」
-3. 确认安装权限
+**方式一：从 Chrome Web Store 安装（暂不支持）**
+1. 访问 [Chrome Web Store](https://chrome.google.com/webstore) 搜索 "GitLab MR Diff Viewer" 
+1. 点击「添加至 Chrome」
+2. 确认安装权限
 
 **方式二：手动安装开发版**
 1. 下载或克隆本项目：
